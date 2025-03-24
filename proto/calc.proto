@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package myservice;
+
+option go_package = "./proto;myservice";
+
+service Calculator {
+  rpc Calculate (CalcRequest) returns (CalcResponse) {}
+}
+
+message CalcRequest {
+  repeated string inputs = 1;
+}
+
+message CalcResponse {
+  repeated Outer outers = 1;
+}
+
+message Outer {
+  repeated Inner inners = 1;
+}
+
+message Inner {
+  repeated float values = 1;
+}
